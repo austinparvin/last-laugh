@@ -18,8 +18,7 @@ const App = () => {
   },[])
   
   const Page = styled.div`
-  min-width: 320px;
-  margin: 24px;
+    margin: 24px;
   `
 
   const Title = styled.div`
