@@ -33,6 +33,7 @@ const App = () => {
   `
 
   const Header = styled.div`
+    padding: 8px;
     font-weight: bold;
     display:grid;
     grid-template-columns: 4fr 2fr 1fr 1fr;
@@ -55,8 +56,10 @@ const App = () => {
     display:grid;
     grid-template-columns: 4fr 2fr 1fr 1fr;
     background-color:${props => props.listing.data.ups % 2 === 0 ? 'rgba(255, 165, 0, .1)' : 'rgba(0,0,255,.1)'};
+    padding: 8px;
 
     @media (max-width: 812px) {
+      
       grid-template-columns: 1fr;
       grid-template-row: 1fr 1fr 1fr 1fr;
     }
