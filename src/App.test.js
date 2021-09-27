@@ -1,8 +1,14 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, cleanup } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
+afterEach(cleanup);
+
+it('on render there should be 20 listings', async () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+
+  let allListings = [];
+  await screen.findAllByTestId('listing').then(listings => allListings = listings);
+
+  expect(allListings.length === 20).toBeTruthy();
 });
+

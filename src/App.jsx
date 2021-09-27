@@ -3,20 +3,6 @@ import styled from 'styled-components';
 import axios from "axios";
 import './App.css';
 
-const App = () => {
-
-  const [listings, setListings] = useState([])
-  const getTopTopics = async () => {
-    const url = 'https://www.reddit.com/r/ProgrammerHumor/top/.json?&limit=20'
-    const resp = await axios.get(url)
-    console.log(resp.data.data.children)
-    setListings(resp.data.data.children.sort((a,b)=>{return b.data.num_comments - a.data.num_comments}))
-  }
-
-  useEffect(()=> {
-    getTopTopics();
-  },[])
-  
   const Page = styled.div`
     margin: 24px;
   `
@@ -88,11 +74,27 @@ const App = () => {
     text-decoration: none;
   `
 
+const App = () => {
+
+  const [listings, setListings] = useState([])
+  const getTopTopics = async () => {
+    const url = 'https://www.reddit.com/r/ProgrammerHumor/top/.json?&limit=20'
+    const resp = await axios.get(url)
+    console.log(resp.data.data.children)
+    setListings(resp.data.data.children.sort((a,b)=>{return b.data.num_comments - a.data.num_comments}))
+  }
+
+  useEffect(()=> {
+    getTopTopics();
+  },[])
+  
+  
+
   return (
     <Page>
       <Title>Top 20 Topics of /r/ProgrammerHumor</Title>
       <Table>
-        <Header>
+        <Header data-testid="header">
           <div>Title</div>
           <div>Author</div>
           <div>Votes</div>
@@ -103,7 +105,7 @@ const App = () => {
           return(
             <Listing key={listing.data.id} listing={listing}>
               <ListingDetail>
-                <ListingDetailTitle>Title: </ListingDetailTitle>
+                <ListingDetailTitle data-testid="listing">Title: </ListingDetailTitle>
                 <ListingLink href={'https://www.reddit.com' + listing.data.permalink}>{listing.data.title}</ListingLink>
               </ListingDetail>
               <ListingDetail>

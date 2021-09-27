@@ -2,6 +2,7 @@
 
 After setting up my local machine with node and npm along with git, the project took me about an hour to check off the main points.
 Then spent another hour utilizing CSS-Grid, Styled Components, and making it mobile responsive.
+Lastly, I spent anhour setting up and working with React Testing Library and Jest to test if on render that the list was populated with indeed 20 items
 
 ## Notable Design Decisions
 
